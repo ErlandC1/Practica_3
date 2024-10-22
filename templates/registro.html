@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <title>Registro en Seminarios</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <h1>Registro en Seminarios</h1>
+    <form method="post">
+        <label for="fecha">Fecha:</label>
+        <input type="date" id="fecha" name="fecha" required><br><br>
+        
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required><br><br>
+        
+        <label for="apellidos">Apellidos:</label>
+        <input type="text" id="apellidos" name="apellidos" required><br><br>
+        
+        <label for="turno">Turno:</label>
+        <select id="turno" name="turno" required>
+            <option value="Mañana">Mañana</option>
+            <option value="Tarde">Tarde</option>
+            <option value="Noche">Noche</option>
+        </select><br><br>
+
+        <label for="seminarios">Seminarios:</label><br>
+        {% for seminario in seminarios %}
+            <input type="checkbox" name="seminarios" value="{{ seminario }}"> {{ seminario }}<br>
+        {% endfor %}
+        <br>
+        
+        <button type="submit">Enviar registro</button>
+    </form>
+</body>
+</html>
